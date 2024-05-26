@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0 auto;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+        background-color: antiquewhite;
+      }
+      img {
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+        height: 100%;
+      }
+      .image-slideshow-selector {
+        display: flex;
+        flex-direction: row;
+      }
+      .img-box-container {
+        width: 200px;
+        height: 100px;
+        opacity: 0.5;
+        overflow: hidden;
+        transition: opacity 0.3s ease;
+      }
+      .img-box-container:hover,
+      .selected-img-box {
+        opacity: 1;
+        cursor: pointer;
+      }
+      .img-box-container img {
+        width: 100%;
+        height: 100%;
+      }
+      .image-selected {
+        width: 760px;
+        height: 350px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="image-selected">
+      <img
+        src="https://www.york.ac.uk/media/news-and-events/pressreleases/2023/Big%20fish%20getting%20smaller-505.jpg"
+        alt="Fish1"
+        id="selectedImage"
+      />
+    </div>
+    <div class="image-slideshow-selector">
+      <div class="img-box-container">
+        <img
+          src="https://www.usnews.com/object/image/00000148-faa6-d526-a5db-fba6951a0000/141010-clownfish-editorial.jpg?update-time=1412954786605&size=responsive640"
+          alt="Fish2"
+        />
+      </div>
+      <div class="img-box-container">
+        <img
+          src="https://images.ctfassets.net/cnu0m8re1exe/4EVTdVf2X2wsTJyw3D4ULV/2a098fa34b18ae6719c4fe5fee3e9292/shutterstock_1590072910.jpg?fm=jpg&fl=progressive&w=660&h=433&fit=fill"
+          alt="Fish3"
+        />
+      </div>
+      <div class="img-box-container">
+        <img
+          src="https://www.koalaoutdoor.com.au/cdn/shop/articles/Reef_Fish_101_How_to_Catch_Them_and_What_to_Do_Koala_Outdoor_1_c1773f18-0df8-4350-82ca-d895ab59fbe5.jpg?v=1673317460"
+          alt="Fish4"
+        />
+      </div>
+      <div class="img-box-container">
+        <img
+          src="https://www.worldatlas.com/r/w1200/upload/04/ab/d1/fish-species-tropical.jpg"
+          alt="Fish5"
+        />
+      </div>
+    </div>
+    <script>
+      document.querySelectorAll(".img-box-container img").forEach((image) => {
+        image.addEventListener("click", function () {
+          const selectedImage = document.getElementById("selectedImage");
+          selectedImage.src = this.src;
+          selectedImage.alt = this.alt;
+
+          document
+            .querySelectorAll(".img-box-container")
+            .forEach((container) => {
+              container.classList.remove("selected-img-box");
+            });
+
+          this.parentElement.classList.add("selected-img-box");
+        });
+      });
+    </script>
+  </body>
+</html>

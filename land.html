@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0 auto;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+        background-color: antiquewhite;
+      }
+      img {
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+        height: 100%;
+      }
+      .image-slideshow-selector {
+        display: flex;
+        flex-direction: row;
+      }
+      .img-box-container {
+        width: 200px;
+        height: 100px;
+        opacity: 0.5;
+        overflow: hidden;
+        transition: opacity 0.3s ease;
+      }
+      .img-box-container:hover,
+      .selected-img-box {
+        opacity: 1;
+        cursor: pointer;
+      }
+      .img-box-container img {
+        width: 100%;
+        height: 100%;
+      }
+      .image-selected {
+        width: 760px;
+        height: 350px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="image-selected">
+      <img
+        src="https://thumbor.forbes.com/thumbor/fit-in/900x510/https://www.forbes.com/advisor/wp-content/uploads/2023/07/top-20-small-dog-breeds.jpeg.jpg"
+        alt="Dog"
+        id="selectedImage"
+      />
+    </div>
+    <div class="image-slideshow-selector">
+      <div class="img-box-container">
+        <img
+          src="https://humanepro.org/sites/default/files/styles/article_new/public/images/hero/_DSC0132_53165.jpg"
+          alt="Cat"
+        />
+      </div>
+      <div class="img-box-container">
+        <img
+          src="https://img.freepik.com/free-photo/baby-hedgehog-playing-moss_488145-1553.jpg"
+          alt="Hedgehog"
+        />
+      </div>
+      <div class="img-box-container">
+        <img
+          src="https://live.staticflickr.com/4118/4852678588_7bdeb3e71e_b.jpg"
+          alt="Hamster"
+        />
+      </div>
+      <div class="img-box-container">
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRos9gpdoNxljYzhdhQeCIOKnUSSjYD1jluWurGcFPgWKkPu90ycMp4yRP_MQHboSn6MwY&usqp=CAU"
+          alt="Sheep"
+        />
+      </div>
+    </div>
+    <script>
+      document.querySelectorAll(".img-box-container img").forEach((image) => {
+        image.addEventListener("click", function () {
+          const selectedImage = document.getElementById("selectedImage");
+          selectedImage.src = this.src;
+          selectedImage.alt = this.alt;
+
+          document
+            .querySelectorAll(".img-box-container")
+            .forEach((container) => {
+              container.classList.remove("selected-img-box");
+            });
+
+          this.parentElement.classList.add("selected-img-box");
+        });
+      });
+    </script>
+  </body>
+</html>

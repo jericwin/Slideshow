@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animals</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+        background-color: rgb(58, 64, 103);
+      }
+      header {
+        background-color: rgba(40, 15, 179, 0.5);
+        backdrop-filter: blur(10px);
+        color: rgb(38, 27, 133);
+        text-align: center;
+        padding: 1rem;
+        position: sticky;
+        top: 0;
+        color: white;
+      }
+      main {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 2rem;
+        
+      }
+      iframe {
+        border: 1px solid black;
+        border-radius: 20px;
+      }
+      .iframe-right {
+        float: right;
+      }
+      .iframe-left {
+        float: left;
+        border: 1px solid black;
+      }
+      
+      
+    </style>
+  </head>
+  <body>
+    <header><b>My Favorite Animals</b></header>
+    <main>
+      <iframe
+        width="500"
+        height="600"
+        src="animal.html"
+        id="animalsIframe"
+      ></iframe>
+      <div class="iframe-right">
+        <iframe
+          width="760"
+          height="450"
+          src="land.html   "
+          id="contentIframe"
+        ></iframe>
+      </div>
+    </main>
+
+    <script>
+      window.addEventListener(
+        "message",
+        function (event) {
+          document.getElementById("contentIframe").src = event.data;
+        },
+        false
+      );
+    </script>
+  </body>
+</html>
